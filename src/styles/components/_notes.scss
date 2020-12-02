@@ -37,7 +37,7 @@
 }
 
 .notes__textarea{
-
+    // border: 1px solid black;
     color: $dark-grey;
     font-size:20px;
     flex: 1 1 auto;
@@ -45,7 +45,7 @@
 
 }
 .notes__image img{
-    box-shadow: 10px 10px $dark-grey ;
+    box-shadow: 2px 2px $dark-grey;
     height: 150px;
 
 }

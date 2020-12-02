@@ -19,7 +19,7 @@ export const NoteScreen = () => {
                 >
                 </textarea>
                 <div className = "notes__image">
-                    <img src = "https://imgs.abduzeedo.com/files/francois/wallpapers/wpw398/wpw-joshua-sortino_1400px.jpg" alt = "image"/>
+                    <img src = "https://imgs.abduzeedo.com/files/francois/wallpapers/wpw398/wpw-joshua-sortino_1400px.jpg" alt = "images"/>
 
                 </div>
             </div>
