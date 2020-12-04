@@ -1,0 +1,56 @@
+/*Se creo este container porque
+el display flex no funciona en el .loader
+debido a que el .loading_2 tiene width del 100% e impide el uso del justify-content: center*/
+.loading__container-loader{
+    background-color: #262626;
+    font-family: Lato, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.loading__loader{
+    width: 500px;
+    position: relative;  
+}
+
+.loading__loading_1{
+
+    border: 2px solid $primary;
+    border-radius: 20px;
+    height: 30px;
+    width: 100%;
+
+}
+
+.loading__loading_1:before{
+    
+    content: "";
+    animation: load 1.8s ease-in-out infinite;
+    background-color: $primary;
+    border-radius: 20px;
+    box-shadow: 10px 0px 15px 0px  $primary;
+    display: block;
+    height: 100%;
+    width: 0px;
+}
+
+.loading__loading_2{
+    color:  $primary;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 45px;
+    text-align: center;
+    width: 100%;
+
+}
+
+
+@keyframes load{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+}

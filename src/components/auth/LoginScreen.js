@@ -1,12 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { login } from '../../actions/auth';
+import validator from 'validator'
+import { /*login,*/ startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
 
     const dispatch = useDispatch();
+    const state = useSelector( state => state );
+    const {ui} = state
     
 
     const [ formValues, handleInputChange ] = useForm({
@@ -19,8 +22,26 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) =>{
       e.preventDefault();
-      dispatch( login(12345, 'sbeas'));
+      if(isFormValid()){
+        dispatch( startLoginEmailPassword(email,password));
+      }
+      // dispatch(login(123,'pepito')) //disparo de accion sincrona  
+      // dispatch( startLoginEmailPassword(email,password)); //Disparo de accion asincrona
 
+    }
+    const isFormValid = () =>{
+      if (!validator.isEmail(email)){
+        console.log('email invalid')
+        return false;
+      }else if ( password.trim().length === 0 ){
+        console.log('password empty')
+        return false;       
+      }
+      return true;
+    }
+
+    const  handleGoogleLogin = () =>{
+      dispatch(startGoogleLogin());
     }
 
     return (
@@ -40,11 +61,15 @@ export const LoginScreen = () => {
           onChange = {handleInputChange}
           />
 
-          <button className="btn btn-primary btn-block" type="submit">Login</button>
+          <button 
+            className="btn btn-primary btn-block" 
+            type="submit"
+            disabled = {ui.loading}
+          >Login</button>
     
           <div className = "auth__social-networks">
             <p>Login with social network</p>
-            <div className="google-btn">
+            <div className="google-btn" onClick = {handleGoogleLogin}>
               <div className="google-icon-wrapper">
                 <img
                   className="google-icon"
