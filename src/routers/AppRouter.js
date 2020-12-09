@@ -35,7 +35,7 @@ export const AppRouter = () => {
 
           dispatch(login(user.uid, user.displayName));
           setIsLoggedIn(true);
-          loadNotes( user.uid );
+          // loadNotes( user.uid );
 
            
           dispatch(startLoadingNotes( user.uid ));
