@@ -5,7 +5,7 @@ export const LoadingScreen = () => {
         <div className="loading__container-loader">
             <div className="loading__loader">
                 <div className="loading__loading_1"></div>
-                <div className="loading__loading_2">Espere...</div>
+                <div className="loading__loading_2">Wait...</div>
             </div>       
         </div>
     )
