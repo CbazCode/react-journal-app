@@ -15,6 +15,8 @@ import { LoadingScreen } from "../components/loading/LoadingScreen";
 
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
+import { loadNotes } from "../helpers/loadNotes";
+import { startLoadingNotes } from "../actions/notes";
 
 export const AppRouter = () => {
 
@@ -33,6 +35,10 @@ export const AppRouter = () => {
 
           dispatch(login(user.uid, user.displayName));
           setIsLoggedIn(true);
+          loadNotes( user.uid );
+
+           
+          dispatch(startLoadingNotes( user.uid ));
 
         }else{
 
