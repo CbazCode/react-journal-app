@@ -1,6 +1,9 @@
+import Swal from 'sweetalert2'
+
 import { types } from "../types/types"
 import {firebase, googleAuthProvider} from '../firebase/firebase-config'
 import { finishLoading, startLoading } from "./ui"
+
 
 export const startLoginEmailPassword = (email, password) =>{
     return (dispatch)=>{
@@ -12,30 +15,12 @@ export const startLoginEmailPassword = (email, password) =>{
                 dispatch(finishLoading());
             } )
             .catch (err =>{
+                Swal.fire('Error', err.message, 'error');
                 console.log(err);
                 dispatch(finishLoading());
             })
 
 
-    }
-    // return (dispatch)=>{
-    //     setTimeout(() => {
-    //         dispatch(login(123, 'el pepe'));
-    //     }, 3500);
-    // }
-}
-
-
-export const startRegisterWithEmailPasswordName = (email,password,name) =>{
-    return( dispatch )=>{
-        firebase.auth().createUserWithEmailAndPassword(email,password).then( async({user}) =>{
-            //Graba el display name en el user debido a que retornar null por no ser una autenticacion con alguna red social
-            await user.updateProfile({displayName: name});
-            dispatch(login(user.uid, user.displayName));
-        } )
-        .catch(err=>{
-            console.log(err);
-        })
     }
 }
 
@@ -49,6 +34,21 @@ export const startGoogleLogin = () =>{
             })
     }
 }
+
+export const startRegisterWithEmailPasswordName = (email,password,name) =>{
+    return( dispatch )=>{
+        firebase.auth().createUserWithEmailAndPassword(email,password).then( async({user}) =>{
+            //Graba el display name en el user debido a que retornar null por no ser una autenticacion con alguna red social
+            await user.updateProfile({displayName: name});
+            dispatch(login(user.uid, user.displayName));
+        } )
+        .catch(err=>{
+            Swal.fire('Error', err.message, 'error');
+            console.log(err);
+        })
+    }
+}
+
 
 export const login = (uid , displayName) =>{
     return {
