@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { activeNote } from '../../actions/notes';
 
 export const JournalEntry = (
