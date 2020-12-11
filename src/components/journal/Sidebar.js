@@ -8,6 +8,8 @@ export const Sidebar = () => {
 
     const {name} = useSelector( state => state.auth );
 
+    const nameShow = name.toUpperCase();
+
     const dispatch = useDispatch();
 
     const handleLogout = () =>{
@@ -22,11 +24,14 @@ export const Sidebar = () => {
     return (
         <aside className = "journal__sidebar">
 
-            <div className = "journal__sidebar-navbar">
-                <h3 className="mt-5">
-                    <i className="far fa-moon"></i>
-                    <span> {name}</span>
-                </h3>
+            <div 
+                className = "journal__sidebar-navbar mt-5">
+                    <div className = "journal__sidebar-title">
+                        <h3 >
+                            <i className="far fa-moon"></i>
+                            <span> {nameShow}</span>
+                        </h3>
+                    </div>
 
                 <button className = "btn"
                     onClick = {handleLogout}
