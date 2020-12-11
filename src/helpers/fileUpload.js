@@ -4,7 +4,6 @@ export const fileUpload = async ( file ) => {
     const formData = new FormData();
     formData.append('upload_preset', 'react-journal');
     formData.append('file', file);
-    console.log(formData);
 
     try{
         const resp = await fetch( cloudUrl, {
@@ -16,7 +15,8 @@ export const fileUpload = async ( file ) => {
             const cloudResp = await resp.json();
             return cloudResp.secure_url;
         }else{
-            throw await resp.json();
+            
+            return null;
         }
     }catch( error ){
 
