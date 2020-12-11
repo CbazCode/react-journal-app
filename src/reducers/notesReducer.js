@@ -14,7 +14,6 @@ export const notesReducer = ( state = initialState, action) => {
             }
 
         case types.notesLogoutCleaning:
-            console.log('log out ...')
             return{
                 ...state,
                 notes:[],
