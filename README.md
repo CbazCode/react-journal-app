@@ -24,6 +24,7 @@ You need to create .env.development and .env.test files. \
 The first one is because you need the insert your firebase credential for the project works. \
 The second is the same, but you need to create another database in firebase to the testing.
 
+Guide in the development of the project: https://github.com/Klerith
 
 
 
